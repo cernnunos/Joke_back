@@ -2,6 +2,4 @@
 
 Node version : 22.20.0
 
-SWAGGER :
-
-link : */api-docs/
+SWAGGER : https://joke-back.onrender.com/api-docs/

@@ -8,7 +8,7 @@ module.exports = (Joke) => {
 
     /**
      * @swagger
-     * /joke/blagues:
+     * /joke/:
      *   post:
      *     summary: Ajoute une nouvelle blague
      *     description: Crée une nouvelle blague avec une question et une réponse.
@@ -227,6 +227,6 @@ module.exports = (Joke) => {
             });
         }
     });
-    
+
     return router;
 };
