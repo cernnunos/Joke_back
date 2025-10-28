@@ -1,8 +1,8 @@
 const express = require("express");
 const router = express.Router();
-const jokeRoutes = require("./joke");
+const jokeRoutes = require("./blagues");
 
 module.exports = (Joke) => {
-  router.use("/joke", jokeRoutes(Joke));
+  router.use("/blagues", jokeRoutes(Joke));
   return router;
 };

@@ -8,7 +8,7 @@ module.exports = (Joke) => {
 
     /**
      * @swagger
-     * /joke/:
+     * /api/v1/blagues/:
      *   post:
      *     summary: Ajoute une nouvelle blague
      *     description: Crée une nouvelle blague avec une question et une réponse.
@@ -75,7 +75,7 @@ module.exports = (Joke) => {
 
     /**
  * @swagger
- * /joke/blagues:
+ * /api/v1/blagues/:
  *   get:
  *     summary: Récupère toutes les blagues
  *     tags: [Blagues]
@@ -99,14 +99,14 @@ module.exports = (Joke) => {
  *                     type: string
  *                     example: Parce qu’il y a trop de bugs
  */
-    router.get("/blagues", async (req, res) => {
+    router.get("/", async (req, res) => {
         const jokes = await Joke.findAll();
         res.json(jokes);
     });
 
     /**
 * @swagger
-* /joke/blagues/random:
+* /api/v1/blagues/random:
 *   get:
 *     summary: Récupère une blague au hasard
 *     tags: [Blagues]
@@ -128,7 +128,7 @@ module.exports = (Joke) => {
 *                   type: string
 *                   example: Parce qu’il y a trop de bugs
 */
-    router.get("/blagues/random", async (req, res) => {
+    router.get("/random", async (req, res) => {
         try {
             const joke = await Joke.findOne({
                 order: Sequelize.literal("RANDOM()")
@@ -145,7 +145,7 @@ module.exports = (Joke) => {
 
     /**
  * @swagger
- * /joke/blagues/{id}:
+ * /api/v1/blagues/{id}:
  *   get:
  *     summary: Récupère une blague par son ID
  *     description: Retourne une blague spécifique en fonction de son identifiant unique.
@@ -205,7 +205,7 @@ module.exports = (Joke) => {
  *                       type: string
  *                       example: Une erreur est survenue lors de la récupération.
  */
-    router.get("/blagues/:id", validator_blagues_id__get, async (req, res) => {
+    router.get("/:id", validator_blagues_id__get, async (req, res) => {
         try {
             const errors = validationResult(req);
             if (!errors.isEmpty()) {
