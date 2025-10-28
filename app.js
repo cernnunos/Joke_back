@@ -2,6 +2,8 @@ const express = require("express");
 const cors = require("cors");
 const bodyParser = require('body-parser');
 const { Sequelize } = require("sequelize");
+const swaggerUi = require('swagger-ui-express');
+const swaggerSpec = require("./swagger")
 
 const jokeModel = require("./models/joke");
 
@@ -24,8 +26,10 @@ sequelize.sync().then(() => {
 const apiV1Routes = require("./routes/api/v1")(Joke);
 app.use("/api/v1", apiV1Routes);
 
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+
 app.listen(8083, () => {
   console.log(
-    `[server]: Server is running at http://localhost:8083`
+    `Server is running at 8083`
   );
 });
